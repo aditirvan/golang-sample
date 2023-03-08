@@ -7,26 +7,6 @@ on:
 
 jobs:
 
-  gcr-build-and-push:
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses: actions/checkout@v3
-    
-    - name: Login to Google Container Registry
-      uses: docker/login-action@v2
-      with:
-        registry: asia.gcr.io
-        username: _json_key
-        password: ${{ secrets.GCR }}
-        
-    - name: Build and push to google container registry
-      uses: docker/build-push-action@v3
-      with:
-        context: .
-        push: true
-        tags: asia.gcr.io/studidevops-369306/goapp:${{ github.ref_name }}
-
   docker-hub-build-and-push:
     runs-on: ubuntu-latest
 
